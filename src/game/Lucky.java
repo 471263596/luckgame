@@ -87,10 +87,12 @@ public class Lucky {
 						}
 						else if(userLogName.equals(userName[i])&&!userLogPass.equals(userPass[i])){
 							System.out.println("密码不正确");
-							failCount++;break;
+							failCount++;
+							break;
 							}
 						else if(i==2&&!userLogName.equals(userName[i])){
 							System.out.println("用户名不正确");
+							break;
 							}
 						
 							
