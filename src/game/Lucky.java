@@ -20,7 +20,6 @@ public class Lucky {
 			System.out.println("          1.注册  ");
 			System.out.println("          2.登录  ");
 			System.out.println("          3.抽奖  ");
-//			System.out.println("          0.退出  ");
 			System.out.println("*******************************");
 			System.out.print("请选择菜单：");
 
@@ -67,62 +66,44 @@ public class Lucky {
 			case 2:
 				//登录
 				System.out.println("[奖客富翁系统>登录]");
-				boolean flag=true;
-				int failCount=0;
-				while(flag){
-					System.out.println("请输入用户名：");
+				
+				boolean flag0=true;
+				int temp=0;
+				while(flag0){
+					System.out.println("用户名：");
 					userLogName=input.next();
-					System.out.println("请输入密码：");
-					userLogPass=input.next();
-				    for (int i = 0; i < 3; i++) {
-				    	if(failCount==3){
-							System.out.println("用户名或密码已输错3次");
-							flag=false;
-							break;
-						}
-						if(userLogName.equals(userName[i])&&userLogPass.equals(userPass[i])){
-							System.out.println("欢迎您："+userLogName);
-							flag=false;
-							break;
-						}
-						else if(userLogName.equals(userName[i])&&!userLogPass.equals(userPass[i])){
-							System.out.println("密码不正确");
-							failCount++;
-							break;
-						
-							}
-						else if(i==2&&!userLogName.equals(userName[i])){
+					for (int i = 0; i < 3; i++) {
+						if(i==2&&!userLogName.equals(userName[i])){
 							System.out.println("用户名不正确");
+						}
+						else if(userLogName.equals(userName[i])){
+							flag0=false;
+							temp=i;
 							break;
-							}
-						
-							
-//						if(i==2&&!userLogName.equals(userName[i])){
-//							   System.out.println("用户名不正确");
-//							   
-//						}
-//						int failCount=0;
-//						while(userLogName.equals(userName[i])){
-//							if(failCount==3){
-//								System.out.println("密码已输错3次");
-//								flag=false;
-//								break;
-//							}
-//							System.out.println("请输入密码：");
-//							userLogPass=input.next();
-//							if(userLogPass.equals(userPass[i])){
-//								System.out.println("欢迎您："+userLogName);
-//								flag=false;
-//								break;
-//							}
-//							else{
-//								System.out.println("密码不正确");
-//								failCount++;
-//								}
-//						}		
-				    	
-				    }
+						}
+					}
 				}
+				boolean flag1=true;
+				int count=0;
+				while(flag1){
+					System.out.println("密码：");
+					userLogPass=input.next();
+					if(userLogPass.equals(userPass[temp])){
+						System.out.println("登陆成功");
+						flag1=false;
+					}
+					else{
+						System.out.println("登陆失败");
+						count++;
+						if(count==3){
+							flag1=false;
+							System.out.println("用户名或密码已输错3次");
+							break;
+						}
+					}
+				}
+	
+				    	
 				
 				
 				break;
